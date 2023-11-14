@@ -15,6 +15,7 @@ src/main/java/christmas
 ├─constants
 │     └─Constants.java 
 ├─controller
+│     ├─ChristmasPromotionApp.java
 │     ├─DiscountController.java
 │     └─UserInputValidationController.java 
 ├─food
@@ -34,7 +35,7 @@ src/main/java/christmas
 └─Application.java
 ```
 - constants 패키지 : 뷰에서 메시지 출력 시 사용되는 스트링 상수
-- controller 패키지 : 할인 관련 연산을 수행하는 컨트롤러 클래스, 사용자 입력에 대한 검증 컨트롤러 클래스
+- controller 패키지 : 프론트 컨트롤러(역할) 클래스, 할인 관련 연산을 수행하는 컨트롤러 클래스, 사용자 입력에 대한 검증 컨트롤러 클래스
 - food 패키지 : 메뉴 enum 클래스  
 - model 패키지 : 고객 정보 클래스
 - service 패키지 : 날짜 입력 검증 기능 클래스, 할인 관련 연산 기능 클래스, 메뉴 입력 검증 기능 클래스
