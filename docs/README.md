@@ -22,7 +22,8 @@ src/main/java/christmas
 │     ├─Appetizer.java
 │     ├─Beverage.java
 │     ├─Dessert.java
-│     └─MainDish.java 
+│     ├─MainDish.java
+│     └─WholeFood.java 
 ├─model
 │     └─Customer.java
 ├─service
