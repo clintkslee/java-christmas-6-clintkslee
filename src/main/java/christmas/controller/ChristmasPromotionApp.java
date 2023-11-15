@@ -2,7 +2,7 @@ package christmas.controller;
 
 import christmas.model.Customer;
 import christmas.service.DateInputValidationService;
-import christmas.service.DiscountService;
+import christmas.service.CustomerService;
 import christmas.service.MenuInputValidationService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -14,13 +14,13 @@ public class ChristmasPromotionApp {
     private InputView inputView;
     OutputView outputView;
     UserInputValidationController userInputValidationController;
-    private DiscountController discountController;
+    private CustomerController customerController;
 
     public ChristmasPromotionApp() {
         inputView = new InputView();
         userInputValidationController =
                 new UserInputValidationController(new DateInputValidationService(), new MenuInputValidationService());
-        discountController = new DiscountController(new DiscountService());
+        customerController = new CustomerController(new CustomerService());
     }
 
     public void run() {
@@ -36,7 +36,7 @@ public class ChristmasPromotionApp {
             userInputValidationController.validateMenu(menuInput);
         } while(!userInputValidationController.checkMenuValidity());
 
-        customer = discountController.setCustomerData(dateInput, menuInput);
+        customer = customerController.createCustomer(dateInput, menuInput);
         outputView = new OutputView(customer);
         outputView.printResult();
     }
