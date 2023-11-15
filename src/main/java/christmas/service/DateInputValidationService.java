@@ -12,7 +12,7 @@ public class DateInputValidationService {
         return true;
     }
     public boolean isNumberBetween1to31(String dateInput) {
-        if(Integer.parseInt(dateInput)<0 || 31<Integer.parseInt(dateInput)) {
+        if(Integer.parseInt(dateInput)<1 || 31<Integer.parseInt(dateInput)) {
             throw new IllegalArgumentException(INPUT_DATE_ERROR_MESSAGE);
         }
         return true;
