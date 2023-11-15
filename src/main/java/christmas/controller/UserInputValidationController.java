@@ -32,8 +32,9 @@ public class UserInputValidationController {
             if(menuInputValidationService.isNotEndWithComma(menuInput));   // 쉼표로 끝나지 않았는지
             if(menuInputValidationService.isLengthBiggerThan3(menuInput));   // 길이가 각각 3 이상인지
             if(menuInputValidationService.hasOneHyphen(menuInput));  // ',' split 결과 각각 '-'을 갖고 있는지
-            if(menuInputValidationService.belongsToWholeFood(menuInput));  // 음식명이 WholeFood 에 속하는지
-            if(menuInputValidationService.hasDuplicateFoodName(menuInput));  // 음식명이 중복이 있는지
+            if(menuInputValidationService.belongsToWholeFood(menuInput));  // 모든 음식명이 WholeFood 에 속하는지
+            if(menuInputValidationService.hasDuplicateFoodName(menuInput));  // 음식명에 중복이 있는지
+            if(menuInputValidationService.isNotOnlyBeverage(menuInput));       // 음식에 음료만 있는지
             if(menuInputValidationService.isNumber(menuInput));  // 주문 개수가 숫자 인지
             if(menuInputValidationService.isPositive(menuInput));  // 주문 개수가 양수 인지
             if(menuInputValidationService.isOrderQuantityAcceptable(menuInput));  // 주문 합이 20 이하인지

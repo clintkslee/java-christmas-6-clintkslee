@@ -1,5 +1,6 @@
 package christmas.service;
 
+import christmas.food.Beverage;
 import christmas.food.WholeFood;
 import java.util.*;
 import static christmas.constants.Constants.INPUT_ORDER_ERROR_MESSAGE;
@@ -16,7 +17,7 @@ public class MenuInputValidationService {
         String[] foodHyphenNum = menuInput.split(",");
         for(String order : foodHyphenNum) {
             if(order.length()<3) {
-                throw new IllegalArgumentException(INPUT_ORDER_ERROR_MESSAGE+" too short [food-number 꼴]");
+                throw new IllegalArgumentException(INPUT_ORDER_ERROR_MESSAGE+" too short. should be [food-number]");
             }
         }
         return true;
@@ -30,7 +31,7 @@ public class MenuInputValidationService {
                 throw new IllegalArgumentException(INPUT_ORDER_ERROR_MESSAGE+" no hyphen");
             }
             if(order.matches(".*-{1,}.*-{1,}.*")) {       // 두개 이상인 경우 정규 표현식
-                throw new IllegalArgumentException(INPUT_ORDER_ERROR_MESSAGE+" more than 2 hyphens");
+                throw new IllegalArgumentException(INPUT_ORDER_ERROR_MESSAGE+" some orders have more than 2 hyphens");
             }
         }
         return true;
@@ -72,6 +73,30 @@ public class MenuInputValidationService {
             throw new IllegalArgumentException(INPUT_ORDER_ERROR_MESSAGE+" not unique");
         }
         return true;
+    }
+
+    public boolean isNotOnlyBeverage(String menuInput) {
+        String[] foodHyphenNum = menuInput.split(",");
+        int beverageCount = 0;
+        for(String order : foodHyphenNum) {
+            String[] parts = order.split("-");
+            if(isBeverage(parts[0])) {              // 음식 개수 == 음료 개수인 경우
+                beverageCount++;
+            }
+        }
+        if(beverageCount==foodHyphenNum.length) {              // 음식 개수 == 음료 개수인 경우
+            throw new IllegalArgumentException(INPUT_ORDER_ERROR_MESSAGE+" only beverage is not allowed");
+        }
+        return true;
+    }
+
+    private boolean isBeverage(String foodName) {
+        for (Beverage beverage : Beverage.values()) {
+            if (beverage.name().equalsIgnoreCase(foodName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean isNumber(String menuInput) {
