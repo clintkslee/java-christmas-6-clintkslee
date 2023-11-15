@@ -76,7 +76,6 @@ public class Customer {
         for(int i=0; i<menu.length; i+=2) {
             sum += WholeFood.valueOf(menu[i]).getPrice()*Integer.parseInt(menu[i+1]);
         }
-        System.out.println(sum);
         return sum;
     }
 
@@ -102,9 +101,9 @@ public class Customer {
         for(int i=0; i<menu.length; i+=2) {
             try {
                 Dessert dessert = Dessert.valueOf(menu[i]); // throw
-                dessertCount++;
+                dessertCount+=Integer.parseInt(menu[i+1]);
             } catch (IllegalArgumentException e) {
-                System.out.println("not member of Dessert");
+                ; // current menu is not dessert
             }
         }
         return dessertCount*2023;
@@ -118,9 +117,9 @@ public class Customer {
         for(int i=0; i<menu.length; i+=2) {
             try {
                 MainDish mainDish = MainDish.valueOf(menu[i]); // throw
-                mainDishCount++;
+                mainDishCount+=Integer.parseInt(menu[i+1]);
             } catch (IllegalArgumentException e) {
-                System.out.println("not member of MainDish");
+                ; // current menu is not maindish
             }
         }
         return mainDishCount*2023;
