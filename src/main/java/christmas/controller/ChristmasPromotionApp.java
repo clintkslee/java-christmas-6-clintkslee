@@ -25,19 +25,17 @@ public class ChristmasPromotionApp {
 
     public void run() {
         inputView.printInputDateMessage();
-        do {
+        do {                                                                        // 날짜 입력
             dateInput = inputView.requestInput();
             userInputValidationController.validateDate(dateInput);
         } while(!userInputValidationController.checkDateValidity());
-
         inputView.printInputMenuMessage();
-        do {
+        do {                                                                        // 주문 입력
             menuInput = inputView.requestInput();
             userInputValidationController.validateMenu(menuInput);
         } while(!userInputValidationController.checkMenuValidity());
-
-        customer = customerController.createCustomer(dateInput, menuInput);
+        customer = customerController.createCustomer(dateInput, menuInput);         // 고객 정보 생성
         outputView = new OutputView(customer);
-        outputView.printResult();
+        outputView.printResult();                                                   // 주문 출력
     }
 }
